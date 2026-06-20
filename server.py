@@ -7,7 +7,9 @@ import httpx
 from mcp.server.fastmcp import FastMCP
 
 
-SERVER_HOST = os.getenv("HOST", "127.0.0.1")
+SERVER_HOST = os.getenv("HOST")
+if not SERVER_HOST:
+    SERVER_HOST = "0.0.0.0" if os.getenv("RENDER") or os.getenv("PORT") else "127.0.0.1"
 SERVER_PORT = int(os.getenv("PORT", "8000"))
 
 mcp = FastMCP(
