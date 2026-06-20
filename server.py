@@ -140,8 +140,16 @@ async def wiki_search_summary(query: str, lang: str = "ko", limit: int = 10) -> 
     return _format_markdown(query, results)
 
 
+def _default_transport() -> str:
+    if os.getenv("MCP_TRANSPORT"):
+        return os.getenv("MCP_TRANSPORT", "stdio")
+    if os.getenv("RENDER") or os.getenv("PORT"):
+        return "streamable-http"
+    return "stdio"
+
+
 if __name__ == "__main__":
-    transport = os.getenv("MCP_TRANSPORT", "stdio")
+    transport = _default_transport()
 
     if transport == "streamable-http":
         mcp.run(transport="streamable-http")

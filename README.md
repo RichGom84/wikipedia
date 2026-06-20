@@ -20,6 +20,7 @@
 .
 ├── server.py
 ├── requirements.txt
+├── runtime.txt
 ├── render.yaml
 └── README.md
 ```
@@ -131,6 +132,7 @@ WIKI_USER_AGENT=WikiSummaryMCP/1.0 (contact: your-email@example.com)
 ```
 
 Render는 `PORT` 환경변수를 자동으로 제공합니다. 서버는 `PORT`가 있으면 해당 포트로 실행합니다.
+`MCP_TRANSPORT`를 빼먹어도 Render의 `PORT` 환경변수를 감지해 자동으로 `streamable-http` 모드로 실행됩니다.
 
 이 저장소에는 `render.yaml`도 포함되어 있어 Render Blueprint로 배포할 수도 있습니다. 배포 후 MCP HTTP 엔드포인트는 보통 아래 형식입니다.
 
