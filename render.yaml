@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: wiki-summary-mcp
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python server.py
+    envVars:
+      - key: MCP_TRANSPORT
+        value: streamable-http
+      - key: HOST
+        value: 0.0.0.0
+      - key: WIKI_USER_AGENT
+        value: WikiSummaryMCP/1.0 (contact: your-email@example.com)
